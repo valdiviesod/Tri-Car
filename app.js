@@ -94,6 +94,9 @@ app.get('/api/rutas', (req,res)=>{
 
 
 
+
+
+
 //Registro y mensajes de advertencias
 app.post('/register', async (req,res) =>{
 	const name = req.body.name;
