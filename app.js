@@ -97,7 +97,6 @@ app.post('/register', async (req,res) =>{
 	const name = req.body.name;
 	const last = req.body.last;
 	const adress = req.body.adress;
-	const phone = req.body.phone;	
 	const id = req.body.id;
 	const date = req.body.bdate;
 	const email = req.body.email;
@@ -105,7 +104,7 @@ app.post('/register', async (req,res) =>{
 	const placa = req.body.placa;
 	const modelo = req.body.modelo;
 	let passwordHash = await bcrypt.hash(passwd, 8);
-	connection.query('INSERT INTO users SET ?', {nombre:name, apellido:last, direccion:adress, telefono:phone, nacimiento:date, email:email, cedula:id, placa:placa, modelo:modelo ,passwd:passwordHash}, async(error, results) =>{
+	connection.query('INSERT INTO users SET ?', {nombre:name, apellido:last, direccion:adress, nacimiento:date, email:email, cedula:id, placa:placa, modelo:modelo ,passwd:passwordHash}, async(error, results) =>{
 		if(error){
 			console.log(error)
 		}else{
@@ -128,7 +127,8 @@ app.post('/register', async (req,res) =>{
 app.post('/registerRutas', async (req,res) =>{
 	const ruta = req.body.ruta;
 	const date = req.body.trip;
-	connection.query('INSERT INTO rutas SET ?', {paradas:ruta, fecha:date}, async(error, results) =>{
+	const number = req.body.phone;
+	connection.query('INSERT INTO rutas SET ?', {paradas:ruta, fecha:date,contacto:number}, async(error, results) =>{
 		if(error){
 			console.log(error)
 		}else{
