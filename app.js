@@ -63,10 +63,6 @@ app.get('/conductor',(req,res)=>{
 	res.render('conductor')
 })
 
-app.get('/usuarioComun',(req,res)=>{
-	res.render('usuarioComun')
-})
-
 app.get('/crearRuta',(req,res)=>{
 	res.render('crearRuta')
 })
@@ -77,6 +73,10 @@ app.get('/seleccionRuta',(req,res)=>{
 
 app.get('/registroCarros',(req,res)=>{
 	res.render('registroCarros')
+})
+
+app.get('/inicioUsuarioN',(req,res)=>{
+	res.render('inicioUsuarioN')
 })
 
 
