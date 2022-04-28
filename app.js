@@ -53,6 +53,16 @@ app.get('/usuarioComun',(req,res)=>{
 	res.render('usuarioComun')
 })
 
+app.get('/crearRuta',(req,res)=>{
+	res.render('crearRuta')
+})
+
+app.get('/seleccionRuta',(req,res)=>{
+	res.render('seleccionRuta')
+})
+
+
+
 //Registro y mensajes de advertencias
 app.post('/register', async (req,res) =>{
 	const name = req.body.name;
@@ -72,6 +82,28 @@ app.post('/register', async (req,res) =>{
 				alert: true,
 				alertTitle: "Registro",
 				alertMessage: "¡Registro exitoso!",
+				alertIcon: 'success',
+				showConfirmButton: false,
+				timer: 1500,
+				ruta: ''
+			})
+		}
+
+	})
+
+})
+
+//Ingreso de rutas
+app.post('/registerRutas', async (req,res) =>{
+	const ruta = req.body.ruta;
+	connection.query('INSERT INTO rutas SET ?', {paradas:ruta}, async(error, results) =>{
+		if(error){
+			console.log(error)
+		}else{
+			res.render('crearRuta', {
+				alert: true,
+				alertTitle: "Creacion de la ruta",
+				alertMessage: "¡La ruta ha sido subida con éxito!",
 				alertIcon: 'success',
 				showConfirmButton: false,
 				timer: 1500,
