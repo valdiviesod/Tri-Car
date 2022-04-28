@@ -1,56 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rutas</title>
-    <link rel="stylesheet" href="resources/css/tailwind.min.css" >
-	  
-
-    <link rel="stylesheet" href="resources/css/jquery.dataTables.min.css" >
-
-    <link rel="stylesheet" href="resources/css/responsive.dataTables.min.css" >	 
-    <link rel="stylesheet" href="resources/css/style.css">  
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+	<title>Rutas Disponibles</title>	
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap5.min.css">
+    <style>
+     table.dataTable thead {
+           background-color:#7952b3;
+           color:aliceblue;
+       }  
+    </style>
 </head>
-<body class="bg-gray-100 text-gray-900 tracking-wider leading-normal">
-    <div class="container w-full md:w-4/5 xl:w-3/5  mx-auto px-2">
-        <div class="bg-green-400 bg-opacity-100 text-gray-100 text-center"><p class="text-xl">Rutas disponibles</p></div>			
-			 <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">			 				
-				<table id="rutas" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
-					<thead>
-                        <tr class="bg-indigo-400 bg-opacity-100 text-white">
-                            <th data-priority="1">PARADAS</th>
-    
-                        </tr>
-					</thead>
-					<tbody>
-					</tbody>					
-				</table>				
-			</div>	
-      </div>
-    
-    <!-- jQuery -->
-	<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>		
-	<!--Datatables -->
-	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-	<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+               <table id="rutas" class="table table-striped table-bordered" style="width:100%">
+               <thead>
+                 <tr>
+                    <th>PARADAS</th>
+                    
+                </tr>
+               </thead>
+               <tbody>
+               </tbody>
+               </table> 
+            </div>
+        </div>
+    </div>
 
-    <script>
-        $(document).ready(function(){
-            const url = 'http://localhost:3000/api/rutas';
-            $('#rutas').DataTable({
-                ajax:{
-                    url:url,
-                    dataSrc:''
-                },
-                columns:[
-                    {data: "paradas"},
-                ],
-                responsive: true
+<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap5.min.js"></script>        
+<script>
+     $(document).ready(function() {   
+         const url = 'http://localhost:3000/api/rutas';
+
+          $('#rutas').DataTable({            
+              ajax:{
+                  url: url,
+                  dataSrc:''
+              },
+              columns:[
+                  {data:"paradas"},
+              ],
+              responsive: true
             }).columns.adjust()
             .responsive.recalc();
         })
-    </script>
+</script>
 </body>
 </html>
