@@ -82,7 +82,7 @@ app.get('/inicioUsuarioN',(req,res)=>{
 
 //Mostrar todos los artículos
 app.get('/api/rutas', (req,res)=>{
-    connection.query('SELECT * FROM rutas', (error,filas)=>{
+    connection.query(('SELECT * FROM rutas'), (error,filas)=>{
         if(error){
             throw error;
         }else{
@@ -90,11 +90,6 @@ app.get('/api/rutas', (req,res)=>{
         }
     })
 });
-
-
-
-
-
 
 
 //Registro y mensajes de advertencias
@@ -107,8 +102,10 @@ app.post('/register', async (req,res) =>{
 	const date = req.body.bdate;
 	const email = req.body.email;
 	const passwd = req.body.pass;
+	const placa = req.body.placa;
+	const modelo = req.body.modelo;
 	let passwordHash = await bcrypt.hash(passwd, 8);
-	connection.query('INSERT INTO users SET ?', {nombre:name, apellido:last, direccion:adress, telefono:phone, nacimiento:date, email:email, id:id, passwd:passwordHash}, async(error, results) =>{
+	connection.query('INSERT INTO users SET ?', {nombre:name, apellido:last, direccion:adress, telefono:phone, nacimiento:date, email:email, cedula:id, placa:placa, modelo:modelo ,passwd:passwordHash}, async(error, results) =>{
 		if(error){
 			console.log(error)
 		}else{
@@ -130,7 +127,8 @@ app.post('/register', async (req,res) =>{
 //Ingreso de rutas
 app.post('/registerRutas', async (req,res) =>{
 	const ruta = req.body.ruta;
-	connection.query('INSERT INTO rutas SET ?', {paradas:ruta}, async(error, results) =>{
+	const date = req.body.trip;
+	connection.query('INSERT INTO rutas SET ?', {paradas:ruta, fecha:date}, async(error, results) =>{
 		if(error){
 			console.log(error)
 		}else{
@@ -149,27 +147,6 @@ app.post('/registerRutas', async (req,res) =>{
 
 })
 
-//Ingreso de carros
-app.post('/registerCarros', async (req,res) =>{
-	const car = req.body.car;
-	connection.query('INSERT INTO carros SET ?', {placa:car}, async(error, results) =>{
-		if(error){
-			console.log(error)
-		}else{
-			res.render('registroCarros', {
-				alert: true,
-				alertTitle: "Registro del vehiculo",
-				alertMessage: "¡El vehiculo ha sido registrado con exito!",
-				alertIcon: 'success',
-				showConfirmButton: false,
-				timer: 1500,
-				ruta: 'crearRuta'
-			})
-		}
-
-	})
-
-})
 
 //Validacion de usuarios
 app.post('/auth', async(req, res)=> {
