@@ -61,6 +61,10 @@ app.get('/seleccionRuta',(req,res)=>{
 	res.render('seleccionRuta')
 })
 
+app.get('/registroCarros',(req,res)=>{
+	res.render('registroCarros')
+})
+
 
 
 //Registro y mensajes de advertencias
@@ -104,6 +108,28 @@ app.post('/registerRutas', async (req,res) =>{
 				alert: true,
 				alertTitle: "Creacion de la ruta",
 				alertMessage: "¡La ruta ha sido subida con éxito!",
+				alertIcon: 'success',
+				showConfirmButton: false,
+				timer: 1500,
+				ruta: ''
+			})
+		}
+
+	})
+
+})
+
+//Ingreso de carros
+app.post('/registerCarros', async (req,res) =>{
+	const car = req.body.car;
+	connection.query('INSERT INTO carros SET ?', {placa:car}, async(error, results) =>{
+		if(error){
+			console.log(error)
+		}else{
+			res.render('registroCarros', {
+				alert: true,
+				alertTitle: "Registro del vehiculo",
+				alertMessage: "¡El vehiculo ha sido registrado con exito!",
 				alertIcon: 'success',
 				showConfirmButton: false,
 				timer: 1500,
