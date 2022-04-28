@@ -1,6 +1,19 @@
 const express = require('express');
 const app = express();
 
+const cors = require('cors');
++
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+    next();
+});
+
+app.use(express.json());
+app.use(cors());
+
 // Para poder capturar los datos del formulario 
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());//Se declara el uso de json
@@ -66,6 +79,19 @@ app.get('/registroCarros',(req,res)=>{
 })
 
 
+//Mostrar todos los artículos
+app.get('/api/rutas', (req,res)=>{
+    connection.query('SELECT * FROM rutas', (error,filas)=>{
+        if(error){
+            throw error;
+        }else{
+            res.send(filas);
+        }
+    })
+});
+
+
+
 
 //Registro y mensajes de advertencias
 app.post('/register', async (req,res) =>{
@@ -89,7 +115,7 @@ app.post('/register', async (req,res) =>{
 				alertIcon: 'success',
 				showConfirmButton: false,
 				timer: 1500,
-				ruta: ''
+				ruta: 'login'
 			})
 		}
 
@@ -111,7 +137,7 @@ app.post('/registerRutas', async (req,res) =>{
 				alertIcon: 'success',
 				showConfirmButton: false,
 				timer: 1500,
-				ruta: ''
+				ruta: 'crearRuta'
 			})
 		}
 
@@ -133,7 +159,7 @@ app.post('/registerCarros', async (req,res) =>{
 				alertIcon: 'success',
 				showConfirmButton: false,
 				timer: 1500,
-				ruta: ''
+				ruta: 'crearRuta'
 			})
 		}
 

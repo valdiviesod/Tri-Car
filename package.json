@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/valdiviesod/TriCar#readme",
   "dependencies": {
+    "ajax": "^0.0.4",
     "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "ejs": "^3.1.7",
     "express": "^4.18.0",
