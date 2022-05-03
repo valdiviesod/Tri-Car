@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 const cors = require('cors');
-+
++	
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
@@ -41,6 +41,7 @@ app.use(session({
 	saveUninitialized: true
 }));
 
+app.use('/', require('./router'));
 
 //Se llama a la conexion de la BD
 const connection = require('./database/db');
@@ -97,7 +98,7 @@ app.post('/register', async (req,res) =>{
 	const name = req.body.name;
 	const last = req.body.last;
 	const adress = req.body.adress;
-	const id = req.body.id;
+	const id = req.body.ced;
 	const date = req.body.bdate;
 	const email = req.body.email;
 	const passwd = req.body.pass;

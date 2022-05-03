@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="resources/css/style.css">
+    <title>Agregar usuarios como ADMIN</title>
+</head>
+
+<body>
+    <div class="register-form">
+        <h1>Agregue usuarios manualmente</h1>
+        <form action="/save" method="POST">
+            <label for="user">Nombre</label>
+            <input type="text" name="name" required tabindex="1" autofocus>
+            <label for="user">Apellido</label>
+            <input type="text" name="last" required tabindex="2">
+            <label for="user">Direccion</label>
+            <input type="text" name="adress" required tabindex="3">
+            <br>
+            <br>
+            <label for="user">Identificacion</label>
+            <input type="text" name="id" required tabindex="5">
+            <small id="names" class="form-text text-muted">Ingrese solo numeros.</small>
+            <br>
+            <br>
+            <label for="user">Placa de su vehiculo</label>
+            <input type="text" name="placa" >
+        
+            <br>
+            <br>
+            <label for="user">Modelo y color del vehiculo</label>
+            <input type="text" name="modelo" ">
+            
+            <br>
+            <br>
+            <label for="start">Fecha de nacimiento</label>
+            <br>
+            <br>
+            
+            
+
+<input type="date" id="start" name="bdate" class="btn-date"
+       value="2022-04-29"
+       min="1950-01-01" max="2022-12-31">
+       <br>
+            <label for="user">Correo electronico</label>
+            <input type="text" name="email" required tabindex="7">
+
+            <br>
+            <label for="pass">Contraseña</label>
+            <input type="password" name="pass" required tabindex="9">
+            <div style="display: inline;">
+                <input type="submit" class="btn-save" value="Agregar">
+            </div>
+        </form>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</body>
+
+</html>
