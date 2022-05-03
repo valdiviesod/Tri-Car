@@ -6,20 +6,57 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="resources/css/style.css">
-    <title>Register</title>
+    <title>Registro de rutas</title>
 </head>
 
 <body>
     <div class="register-form">
         <form action="/registerRutas" method="POST">
             <br>
-            <label for="ruta">Ingrese las rutas seguidas de un Slash (/)</label>
+            <label for="ruta">Ingrese el punto de parada</label>
             <br>
             <br>
         
-            <input type="text" name="ruta" required tabindex="1" autofocus>
+            <input type="text" name="partida" required tabindex="1" autofocus>
             <br>
             <br>
+
+            <label for="ruta">Ingrese las paradas intermedias</label>
+            <br>
+            <br>
+        
+            <input type="text" name="p1"  tabindex="2" autofocus>
+            <small id="names" class="form-text text-muted">Si no tiene paradas intermedias deje este campo vacío</small>
+            <br>
+            <br>
+
+            <label for="ruta">Ingrese las paradas intermedias</label>
+            <br>
+            <br>
+        
+            <input type="text" name="p2"  tabindex="3" autofocus>
+            <small id="names" class="form-text text-muted">Si no tiene paradas intermedias deje este campo vacío</small>
+            <br>
+            <br>
+
+            <label for="ruta">Ingrese las paradas intermedias</label>
+            <br>
+            <br>
+        
+            <input type="text" name="p3"  tabindex="4" autofocus>
+            <small id="names" class="form-text text-muted">Si no tiene paradas intermedias deje este campo vacío</small>
+            <br>
+            <br>
+
+            <label for="ruta">Ingrese el punto de llegada</label>
+            <br>
+            <br>
+        
+            <input type="text" name="llegada" required tabindex="5" autofocus>
+            <br>
+            <br>
+
+            
 
             <label for="ruta">Ingrese su numero de contacto</label>
             
