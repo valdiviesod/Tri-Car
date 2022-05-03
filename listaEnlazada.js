@@ -80,13 +80,17 @@ class Linkedlist {
     };
 
 };
-function ruta() {
-    var start = document.getElementById("from").value;
-    var start1 = document.getElementById("to3").value;
-    var destino1 = document.getElementById("to").value;
-    var destino2 = document.getElementById("to2").value;
+
+    var inicio = document.getElementById("partida").value;
+    var p1 = document.getElementById("p1").value;
+    var p2 = document.getElementById("p2").value;
+    var p3 = document.getElementById("p3").value;
+    var llegada = document.getElementById("llegada").value;
+
+    miList.add(inicio);
+    miList.add(p1);
+    miList.add(p2);
+    miList.add(p3);
+    miList.add(llegada);
     console.log(miList);
-    miList.add(start);
-    miList.add(destino2);
-    miList.add(start1);
-    miList.add(destino1);
+
