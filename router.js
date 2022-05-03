@@ -16,6 +16,10 @@ router.get('/create', (req,res) => {
     res.render('create');
 })
 
+router.get('/admin', (req,res) => {
+    res.render('admin');
+})
+
 router.get('/edit/:id', (req,res)=>{    
     const id = req.params.id;
     connection.query('SELECT * FROM users WHERE id=?',[id] , (error, results) => {
@@ -29,11 +33,11 @@ router.get('/edit/:id', (req,res)=>{
 
 router.get('/delete/:id', (req, res) => {
     const id = req.params.id;
-    connectionnodemo.query('DELETE FROM users WHERE id = ?',[id], (error, results)=>{
+    connection.query('DELETE FROM users WHERE id = ?',[id], (error, results)=>{
         if(error){
             console.log(error);
         }else{           
-            res.redirect('admin');         
+            res.redirect('/admin');         
         }
     })
 });

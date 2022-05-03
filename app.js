@@ -133,7 +133,7 @@ app.post('/registerRutas', async (req,res) =>{
 	const llegada = req.body.llegada;
 	const date = req.body.trip;
 	const number = req.body.phone;
-	connection.query('INSERT INTO rutas SET ?', {partida:salida, intermedia1:pa1, intermedia2:pa2, intermedia2:pa2, llegada:llegada, fecha:date,contacto:number}, (error, results) =>{
+	connection.query('INSERT INTO rutas SET ?', {partida:salida, intermedia1:pa1, intermedia2:pa2, intermedia3:pa3, llegada:llegada, fecha:date,contacto:number}, (error, results) =>{
 		if(error){
 			console.log(error)
 		}else{

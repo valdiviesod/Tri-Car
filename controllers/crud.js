@@ -5,13 +5,13 @@ exports.save = (req, res)=>{
     const name = req.body.name;
 	const last = req.body.last;
 	const adress = req.body.adress; 
-	const id = req.body.ced;
+	const cedula = req.body.cedula;
 	const date = req.body.bdate;
 	const email = req.body.email;
 	const passwd = req.body.pass;
 	const placa = req.body.placa;
 	const modelo = req.body.modelo;
-	connection.query('INSERT INTO users SET ?', {nombre:name, apellido:last, direccion:adress, nacimiento:date, email:email, cedula:id, placa:placa, modelo:modelo ,passwd:passwd}, (error, results) =>{
+	connection.query('INSERT INTO users SET ?', {nombre:name, apellido:last, direccion:adress, nacimiento:date, email:email, cedula:cedula, placa:placa, modelo:modelo ,passwd:passwd}, (error, results) =>{
         if(error){
             console.log(error);
         }else{
